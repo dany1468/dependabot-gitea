@@ -1,38 +1,41 @@
 # Dependabot::Gitea
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dependabot/gitea`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'dependabot-gitea'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install dependabot-gitea
+Companion to Updating dependencies in Gitea repos.
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+$ bundle init
+```
 
-## Development
+Add following lines to Gemfile, and run `bunble install`.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+gem "dependabot-omnibus"
+gem 'dependabot-gitea'
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Download sample updating script.
+
+```
+$ wget https://raw.githubusercontent.com/dany1468/dependabot-gitea/master/scripts/generic-update-script.rb
+```
+
+Run script. `GITHUB_ACCESS_TOKEN` and `GITEA_ACCESS_TOKEN` environment variables are required.
+
+```
+$ GITHUB_ACCESS_TOKEN= GITEA_ACCESS_TOKEN= bundle exec ruby generic-update-script.rb
+```
+
+## :warning: Currently not support updating multiple files
+
+https://github.com/dany1468/dependabot-gitea/blob/master/lib/hack/dependabot-core/common/lib/dependabot/clients/gitea.rb#L87
+
+Sorry. Currently updating first file only.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/dependabot-gitea.
+Bug reports and pull requests are welcome on GitHub at https://github.com/dany1468/dependabot-gitea.
 
 
 ## License
