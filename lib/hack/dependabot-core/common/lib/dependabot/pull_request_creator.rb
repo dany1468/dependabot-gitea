@@ -15,8 +15,9 @@ module Dependabot
       when "github" then github_creator.create
       when "gitlab" then gitlab_creator.create
       when "azure" then azure_creator.create
-      when "gitea" then gitea_creator.create
+      when "bitbucket" then bitbucket_creator.create
       when "codecommit" then codecommit_creator.create
+      when "gitea" then gitea_creator.create
       else raise "Unsupported provider #{source.provider}"
       end
     end
@@ -28,9 +29,9 @@ module Dependabot
         base_commit: base_commit,
         credentials: credentials,
         files: files,
-        commit_message: message_builder.commit_message,
-        pr_description: message_builder.pr_message,
-        pr_name: message_builder.pr_name,
+        commit_message: message.commit_message,
+        pr_description: message.pr_message,
+        pr_name: message.pr_name,
         author_details: author_details,
         labeler: labeler
       )
